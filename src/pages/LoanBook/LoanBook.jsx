@@ -4,7 +4,6 @@ import "./loanBook.css";
 const LoanBook = () => {
   const [books, setBooks] = useState([]);
   const [users, setUsers] = useState([]);
-//   const [loans, setLoans] = useState([]);
 
   useEffect(() => {
     const bookStored = JSON.parse(localStorage.getItem("books"));
@@ -16,11 +15,6 @@ const LoanBook = () => {
     if (usersStored !== null) {
       setUsers(usersStored);
     }
-
-    // const loansStored = JSON.parse(localStorage.getItem("loans"));
-    // if (loansStored !== null) {
-    //   setLoans(loansStored);
-    // }
   }, []);
 
   function handleLoanBook(e) {

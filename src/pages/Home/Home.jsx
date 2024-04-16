@@ -199,45 +199,47 @@ const Home = () => {
             </div>
           )}
         </div>
-        <div className="col-12 col-xl-12">
+        <div className="col-12 col-xl-12 mt-4">
           <h3>Préstamos</h3>
-          {loans.length > 0 ? (
-            <table className="table align-middle mb-0 bg-white">
-              <thead className="bg-light">
-                <tr>
-                  <th>ID Préstamo</th>
-                  <th>Nombre Libro</th>
-                  <th>Nombre usuario</th>
-                  <th>Status</th>
-                  <th>Fecha préstamo</th>
-                </tr>
-              </thead>
-              <tbody>
-                {loans.map((loan) => (
-                  <Loan loan={loan} key={"prestamo-" + loan.idLoan} />
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <div className="card" aria-hidden="true">
-              <div className="card-body">
-                <h5 className="card-title placeholder-glow">
-                  <span className="placeholder col-6"></span>
-                </h5>
-                <p className="card-text placeholder-glow">
-                  <span className="placeholder col-7"></span>
-                  <span className="placeholder col-4"></span>
-                  <span className="placeholder col-4"></span>
-                  <span className="placeholder col-6"></span>
-                  <span className="placeholder col-8"></span>
-                </p>
-                <a
-                  className="btn btn-primary disabled placeholder col-6"
-                  aria-disabled="true"
-                ></a>
+          <div className="home">
+            {loans.length > 0 ? (
+              <table className="table align-middle mb-0 bg-white">
+                <thead className="bg-light">
+                  <tr>
+                    <th>ID Préstamo</th>
+                    <th>Nombre Libro</th>
+                    <th>Nombre usuario</th>
+                    <th>Status</th>
+                    <th>Fecha préstamo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {loans.map((loan) => (
+                    <Loan loan={loan} key={"prestamo-" + loan.idLoan} />
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <div className="card" aria-hidden="true">
+                <div className="card-body">
+                  <h5 className="card-title placeholder-glow">
+                    <span className="placeholder col-6"></span>
+                  </h5>
+                  <p className="card-text placeholder-glow">
+                    <span className="placeholder col-7"></span>
+                    <span className="placeholder col-4"></span>
+                    <span className="placeholder col-4"></span>
+                    <span className="placeholder col-6"></span>
+                    <span className="placeholder col-8"></span>
+                  </p>
+                  <a
+                    className="btn btn-primary disabled placeholder col-6"
+                    aria-disabled="true"
+                  ></a>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -49,22 +49,24 @@ const UserDetail = () => {
             </div>
             <div className="col-12 col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <h2>Relación de libros de {userData.name}</h2>
-                <table className="table align-middle mb-0 bg-white">
-                <thead className="bg-light">
-                    <tr>
-                    <th>ID Préstamo</th>
-                    <th>Nombre Libro</th>
-                    <th>Nombre usuario</th>
-                    <th>Status</th>
-                    <th>Fecha préstamo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {userBooks.map((loan) => (
-                    <Loan loan={loan} key={"prestamo-" + loan.idLoan} />
-                    ))}
-                </tbody>
-                </table>
+                <div className="home">
+                  <table className="table align-middle mb-0 bg-white">
+                  <thead className="bg-light">
+                      <tr>
+                      <th>ID Préstamo</th>
+                      <th>Nombre Libro</th>
+                      <th>Nombre usuario</th>
+                      <th>Status</th>
+                      <th>Fecha préstamo</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {userBooks.map((loan) => (
+                      <Loan loan={loan} key={"prestamo-" + loan.idLoan} />
+                      ))}
+                  </tbody>
+                  </table>
+                </div>
             </div>
         </div>
     </div>

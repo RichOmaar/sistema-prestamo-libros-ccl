@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import './bookDetail.css'
 import { useEffect, useState } from 'react';
 import Book from '../../components/Book/Book';
+import Swal from 'sweetalert2';
 
 const BookDetail = () => {
     let { slug } = useParams();
@@ -15,6 +16,16 @@ const BookDetail = () => {
         if (booksStored !== null) {
             const findBook = booksStored.find((book) => book.url == requiredBook);
             setBookData(findBook)
+        } else {
+            Swal.fire({
+              position: 'center',
+              icon: 'warning',
+              title: 'No ha cargado la información, recarrga la página',
+              showConfirmButton: false,
+              timer: 1500
+            }).then(() => {
+              window.location.reload();
+            })
         }
     },[slug])
   return (

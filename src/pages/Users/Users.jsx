@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './users.css'
 import User from '../../components/User/User';
+import Swal from 'sweetalert2';
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -8,8 +9,18 @@ const Users = () => {
     useEffect(() => {
         const usersStored = JSON.parse(localStorage.getItem("users"));
         if (usersStored !== null) {
-        setUsers(usersStored);
-        }
+          setUsers(usersStored);
+        } else {
+          Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'No ha cargado la información, recarrga la página',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            window.location.reload();
+          })
+      }
     },[])
   return (
     <div className='container py-4'>

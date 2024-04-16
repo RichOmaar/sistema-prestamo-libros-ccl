@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import "./loan.css";
-import { FaCheck } from "react-icons/fa";
-import { MdOutlineCancel } from "react-icons/md";
-
+import Swal from 'sweetalert2'
 const Loan = ({ loan }) => {
     const [loans, setLoans] = useState([]);
   
@@ -10,6 +8,14 @@ const Loan = ({ loan }) => {
       const loansStored = JSON.parse(localStorage.getItem("loans"));
       if (loansStored !== null) {
         setLoans(loansStored);
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'No ha cargado la información, recarrga la página',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     }, []);
     

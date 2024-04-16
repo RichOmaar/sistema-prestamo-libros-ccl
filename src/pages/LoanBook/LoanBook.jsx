@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./loanBook.css";
+import Swal from 'sweetalert2'
 
 const LoanBook = () => {
   const [books, setBooks] = useState([]);
@@ -9,11 +10,31 @@ const LoanBook = () => {
     const bookStored = JSON.parse(localStorage.getItem("books"));
     if (bookStored !== null) {
       setBooks(bookStored);
+    } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'No ha cargado la información, recarrga la página',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          window.location.reload();
+        })
     }
 
     const usersStored = JSON.parse(localStorage.getItem("users"));
     if (usersStored !== null) {
       setUsers(usersStored);
+    } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'No ha cargado la información, recarrga la página',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          window.location.reload();
+        })
     }
   }, []);
 
@@ -39,6 +60,14 @@ const LoanBook = () => {
       loansStored.push({ idLoan: loansStored.length + 1, idUser, name, lastName, ean: eanForm, title, loan_date: newDate });
       localStorage.setItem("loans", JSON.stringify(loansStored));
     }
+
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Se prestó el libro: ' + title,
+      showConfirmButton: false,
+      timer: 1500
+    })
 
     e.target.reset();
   }

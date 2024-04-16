@@ -3,6 +3,7 @@ import "./userDetail.css";
 import { useEffect, useState } from "react";
 import User from "../../components/User/User";
 import Loan from "../../components/Loan/Loan";
+import Swal from "sweetalert2";
 
 const UserDetail = () => {
   let { user } = useParams();
@@ -24,7 +25,17 @@ const UserDetail = () => {
           (book) => book.idUser == findUser.idUser
         );
         setUserBooks(findBooks);
-      }
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'No ha cargado la información, recarrga la página',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          window.location.reload();
+        })
+    }
     }
   }, [user]);
 

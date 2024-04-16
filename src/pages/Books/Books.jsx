@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './books.css'
 import Book from '../../components/Book/Book';
+import Swal from 'sweetalert2';
 
 const Books = () => {
   const [books, setBooks] = useState([]);
@@ -9,7 +10,17 @@ const Books = () => {
     const bookStored = JSON.parse(localStorage.getItem("books"));
     if (bookStored !== null) {
       setBooks(bookStored);
-    }
+    } else {
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'No ha cargado la información, recarrga la página',
+        showConfirmButton: false,
+        timer: 1500
+      }).then(() => {
+        window.location.reload();
+      })
+  }
   },[])
   
   return (

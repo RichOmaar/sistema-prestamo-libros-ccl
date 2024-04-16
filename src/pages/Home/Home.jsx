@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import User from "../../components/User/User";
 import Book from "../../components/Book/Book";
 import Loan from "../../components/Loan/Loan";
+import Swal from "sweetalert2";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -70,17 +71,47 @@ const Home = () => {
     const bookStored = JSON.parse(localStorage.getItem("books"));
     if (bookStored !== null) {
       setBooks(bookStored);
-    }
+    } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'No ha cargado la información, recarrga la página',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          window.location.reload();
+        })
+      }
 
     const usersStored = JSON.parse(localStorage.getItem("users"));
     if (usersStored !== null) {
       setUsers(usersStored);
-    }
+    } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'No ha cargado la información, recarrga la página',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          window.location.reload();
+        })
+      }
 
     const loansStored = JSON.parse(localStorage.getItem("loans"));
     if (loansStored !== null) {
       setLoans(loansStored);
-    }
+    } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'No ha cargado la información, recarrga la página',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          window.location.reload();
+        })
+      }
   }, []);
 
   return (
